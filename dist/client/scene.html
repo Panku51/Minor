@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Three</title>
+    <title>Info</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        .tooltip {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: antiquewhite;
+            padding: 10px;
+            position: relative;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition-duration: 0.4s;
+            transition-property: opacity, transform;
+        }
+        
+        .tooltip::after {
+            position: absolute;
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            top: 90%;
+            left: 50%;
+            transform: rotateZ(45deg) translateX(-50%);
+            z-index: -1;
+        }
+        
+        .hide {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        
+        .show {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+        
+        .webgl {
+            width: 80vw;
+            height: 210px;
+        }
+        
+        .webgl2 {
+            top: 0;
+            right: 0;
+        }
+        
+        .canvasClass {
+            position: absolute;
+            opacity: 1;
+            height: 150px;
+            width: 200px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <canvas class="webgl"></canvas>
+    <!-- <canvas class="canvasClass webgl2"></canvas> -->
+    <script type="module" src="bundle.js"></script>
+
+    
+</body>
+
+</html>
