@@ -14,9 +14,10 @@ const allActions = [];
 const baseActions = {
     idle: { weight: 1 },
     PoseToIdle: { weight: 0 },
-    IdleToPose: { weight: 0 }
+    upward: { weight: 0 },
+    dandasana: { weight: 0 },
+    downDog: { weight: 0 }
 };
-
 let panelSettings, numAnimations;
 
 init();
@@ -53,7 +54,7 @@ function init() {
     scene.add(mesh);
 
     const loader = new GLTFLoader();
-    loader.load('assets/char.glb', function(gltf) {
+    loader.load('assets/char1.glb', function(gltf) {
 
         model = gltf.scene;
         scene.add(model);
@@ -106,7 +107,7 @@ function init() {
 
     // camera
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 100);
-    camera.position.set(-1, 2, 3);
+    camera.position.set(-1, 2, 4);
 
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enablePan = false;
@@ -127,13 +128,16 @@ function createPanel() {
 
     const folder1 = panel.addFolder('Base Actions');
     const folder2 = panel.addFolder('Types');
-    folder2.add(Types, 'Yoga' [ 'Viparita', 'Option 2', 'Option 3' ]);
 
 
     panelSettings = {
+        options:"idle",
+        camera:'Flip it',
         'modify time scale': 1.0
     };
-
+    
+    panel.add(panelSettings, 'options', [ 'upward', 'dandasana', 'downDog' ] );
+    panel.add(panelSettings, 'camera',  'Flip it');
     const baseNames = ['None', ...Object.keys(baseActions)];
 
     for (let i = 0, l = baseNames.length; i !== l; ++i) {
@@ -155,7 +159,6 @@ function createPanel() {
         };
 
         crossFadeControls.push(folder1.add(panelSettings, name));
-
     }
 
 
@@ -327,5 +330,5 @@ function animate() {
 
 }
 const render = () => {
-    renderer.render(scene, camera);
+    renderer.render(scene, camera,);
 }

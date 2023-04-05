@@ -245,7 +245,7 @@ loader.load('./assets/walls.glb', function(glb) {
     // root.position.set(-50, 0.15, 0)
     root.add(sound);
     //group.add(root);
-    scene.add(root);
+    //scene.add(root);
 
 })
 
