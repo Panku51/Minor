@@ -12,3 +12,7 @@ module.exports = merge(common, {
         hot: true,
     },
 })
+
+devServer: {
+  allowedHosts: "all"
+}
